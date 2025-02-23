@@ -1,0 +1,58 @@
+rules_version = '2';
+// TODO: Definir as próprias regras de banco de dados
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAdmin() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.admin == 'XXX'; // TODO: Alterar para o seu próprio ID de administrador
+    }
+    function isOwner() {
+      return request.auth.uid == resource.data.ownerId || request.auth.uid == resource.data.userId;
+    }
+    function idsMatch(userId) {
+      return request.auth.uid == userId;
+    }
+    function isSignedIn() {
+      return request.auth.uid != null;
+    }
+    function isPaid() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.plan.status == 'active';
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+    match /users/{userId} {
+      allow delete: if false;
+      allow create: if isSignedIn() && idsMatch(userId);
+      allow update: if
+        isSignedIn() && idsMatch(userId)
+        && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['email', 'id', 'admin', 'plan']);
+      allow read:
+        if isSignedIn() && (idsMatch(userId) || isAdmin());
+    }
+    match /tokens/{planId} {
+      allow delete: if false;
+      allow create: if false;
+      allow update: if false;
+      allow read: if isSignedIn() && isPaid();
+    }
+    match /appVersion/{current} {
+      allow delete: if false;
+      allow create: if false;
+      allow update: if false;
+      allow read: if isSignedIn() && isPaid();
+    }
+    match /progress/{progressId} {
+      allow read, write: if true;
+    }
+    match /lessons/{lessonId} {
+      allow read, write: if isSignedIn() && isPaid();
+    }
+    match /courses/{courseId} {
+      allow read, write: if isSignedIn() && isPaid();
+    }
+    match /onboarding/{onboardingId} {
+      allow read, create: if isSignedIn() && isPaid();
+      allow update, delete: if false;
+    }
+  }
+}
