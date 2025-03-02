@@ -1,0 +1,20 @@
+[
+    {
+      "localId": "user1",
+      "email": "bastosrafael33@gmail.com",
+      "emailVerified": true,
+      "passwordHash": "UkVEQUNURUQ=", 
+      "salt": "U09NRV9TQUxU", 
+      "passwordUpdatedAt": 1700000000000,
+      "validSince": "1700000000",
+      "disabled": false,
+      "providerUserInfo": [
+        {
+          "providerId": "password",
+          "email": "bastosrafael33@gmail.com",
+          "federatedId": "bastosrafael33@gmail.com",
+          "rawId": "bastosrafael33@gmail.com"
+        }
+      ]
+    }
+  ]  

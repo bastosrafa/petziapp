@@ -3,7 +3,9 @@ const admin = require("firebase-admin");
 const express = require("express");
 const cors = require("cors");
 
-const FIREBASE_API_KEY = functions.config().project.api_key; // TODO: Definir API key do projeto
+// Pegando a chave da API do Firebase Functions Config
+require("dotenv").config();
+const FIREBASE_API_KEY = process.env.FIREBASE_API_KEY;
 
 const app = express();
 
@@ -47,7 +49,6 @@ app.post("/", async (req, res) => {
 
   try {
     const decodedToken = await auth.verifyIdToken(idToken);
-
     const uid = decodedToken.uid;
     const user = await auth.getUser(uid);
     const email = user.email;
@@ -99,4 +100,11 @@ app.post("/", async (req, res) => {
   }
 });
 
+// Exportando a função para o Firebase
 exports.changePassword = functions.https.onRequest(app);
+
+// Iniciando o servidor localmente se necessário
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+  console.log(`Servidor rodando na porta ${port}`);
+});

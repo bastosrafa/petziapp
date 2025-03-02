@@ -7,13 +7,15 @@ import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
 // TODO: Colocar o firebaseConfig do seu app aqui abaixo
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyATBmIbOGfKPYmXY2UwBstIhqV_M00pBgI",
-  authDomain: "template-90106.firebaseapp.com",
-  projectId: "template-90106",
-  storageBucket: "template-90106.appspot.com",
-  messagingSenderId: "692560077016",
-  appId: "1:692560077016:web:8f07639aba2297dab7b7ad",
+  apiKey: "AIzaSyBnLH-WPXrw6LbXTo6FhHogwjFApEOXIos",
+  authDomain: "petzia-f86b4.firebaseapp.com",
+  projectId: "petzia-f86b4",
+  storageBucket: "petzia-f86b4.firebasestorage.app",
+  messagingSenderId: "375896389326",
+  appId: "1:375896389326:web:dddf24146bf368fc88029f",
+  measurementId: "G-SZJ3S8XPKT"
 };
 
 // Initialize Firebase

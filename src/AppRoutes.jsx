@@ -48,8 +48,7 @@ function AppRoutes() {
         <BrowserRouter>
           {user ? (
             <UserDocProvider user={user}>
-              <ReferrerDocProvider user={user}>
-                {isMobile ? (
+                            {isMobile ? (
                   <TopbarMobile setRerender={setRerender} />
                 ) : (
                   <Topbar setRerender={setRerender} />
@@ -92,7 +91,6 @@ function AppRoutes() {
                     <BottomBar />
                   </div>
                 ) : null}
-              </ReferrerDocProvider>
             </UserDocProvider>
           ) : (
             <Routes>

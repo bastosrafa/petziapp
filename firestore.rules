@@ -45,7 +45,8 @@ service cloud.firestore {
       allow read, write: if true;
     }
     match /lessons/{lessonId} {
-      allow read, write: if isSignedIn() && isPaid();
+      allow read: if isSignedIn() && isPaid();
+      allow write: if isSignedIn() && isPaid();
     }
     match /courses/{courseId} {
       allow read, write: if isSignedIn() && isPaid();

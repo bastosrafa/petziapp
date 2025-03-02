@@ -28,6 +28,9 @@ import { isAfter } from "date-fns";
 import { LogOutIcon, UserIcon } from "lucide-react";
 import useMediaQuery from "@/hooks/useMediaQuery";
 
+// ✅ IMPORTANDO ÍCONE DO ADESTRAMENTO
+import { PawPrintIcon } from "lucide-react";
+
 export default function Sidebar({
   rerender,
   setRerender,
@@ -64,9 +67,7 @@ export default function Sidebar({
         <div className="flex flex-col gap-3 box-border">
           {routeOptions.map((option, index) => {
             if (option.admin && !userDoc.admin) return null;
-
             if (option.hidden) return null;
-
             if (userDoc.name === "Aluno Teste" && option.route === "/maia") {
               return null;
             }
@@ -117,21 +118,44 @@ export default function Sidebar({
             );
           })}
 
-          {/* {!tokenDoc && (
-              <div
-                role="button"
-                className="py-3 px-5 flex items-center gap-3 transition-all duration-300 hover:bg-primary/5"
-                onClick={requestPermission}
-              >
-                <BellIcon />
-                <p className="text-md">Ativar notificações</p>
-              </div>
-            )} */}
+          {/* ✅ ADICIONANDO BOTÃO PARA O ADESTRAMENTO NO SIDEBAR */}
+          <div
+            role="button"
+            className={`${
+              sidebarExpanded ? "w-full py-3 pl-2" : "w-fit p-3"
+            } relative flex items-center gap-3 transition-all duration-300 hover:bg-[#dfdfff55] rounded-md`}
+            onClick={() => navigate("/adestramento")}
+          >
+            <PawPrintIcon className="w-5 h-5 text-brand" />
+            {sidebarExpanded && (
+              <p className="text-sm text-black/75 font-normal">Adestramento</p>
+            )}
+          </div>
+
+          {/* ✅ MANTENDO A OPÇÃO DE NOTIFICAÇÕES QUE JÁ EXISTIA */}
+          {!userDoc.tokenDoc && (
+            <div
+              role="button"
+              className="py-3 px-5 flex items-center gap-3 transition-all duration-300 hover:bg-primary/5"
+              onClick={() => {
+                getToken(messaging, {
+                  vapidKey: "SUA_VAPID_KEY_AQUI",
+                }).then((token) => {
+                  console.log("Token de notificação:", token);
+                });
+              }}
+            >
+              <BellIcon />
+              <p className="text-md">Ativar notificações</p>
+            </div>
+          )}
         </div>
+
         <div>
           <Separator className="my-3 opacity-15" />
           <div className="flex flex-col py-2.5">
-            {/* <Button
+            {/* ✅ MANTENDO O BOTÃO DA CENTRAL DE AJUDA */}
+            <Button
               size="noPadding"
               variant="ghost"
               onClick={() => {
@@ -144,7 +168,9 @@ export default function Sidebar({
             >
               <InfoCircledIcon className="w-4 h-4 mr-2" />
               Central de Ajuda
-            </Button> */}
+            </Button>
+
+            {/* ✅ MANTENDO O BOTÃO DE LOGOUT */}
             <Button
               size="noPadding"
               variant="ghost"
