@@ -4,23 +4,31 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import { ThemeProvider } from "./providers/ThemeProvider";
 import { useAuthContext } from "./hooks/useAuthContext";
-import Loading from "./components/Loading";
-import Profile from "./pages/Profile/Profile";
-import { useEffect, useRef, useState } from "react";
+import Loading from "./components/Loading.jsx"; // ✅ Caminho corrigido
+import Profile from "./pages/Profile/Profile.jsx"; // ✅ Caminho corrigido
 import { Toaster } from "@/shadcn/components/ui/toaster";
 import { UserDocProvider } from "./contexts/UserDocContext";
 import useMediaQuery from "./hooks/useMediaQuery";
 import Topbar from "./components/Topbar";
 import PasswordRecovery from "./pages/Recover/Recover";
 import Help from "./pages/Help/Help";
-import Training from "./pages/Training/Training";
+import Training from "./pages/Adestramento/TrainingTracks";
 import { ReferrerDocProvider } from "./contexts/ReferrerDocContext";
-import { db } from "./firebase/config";
+import { db, auth } from "./firebase/config"; // ✅ Caminho corrigido
 import { doc, onSnapshot } from "firebase/firestore";
-import Dashboard from "./pages/Dashboard/Dashboard";
+import Dashboard from "./pages/Dashboard/Dashboard.jsx"; // ✅ Caminho correto
 import TopbarMobile from "./components/TopbarMobile";
 import BottomBar from "./components/BottomBar";
 import Content from "./pages/Content/Content";
+
+// ✅ Importando novas páginas de Adestramento
+import TrainingTracks from "@/pages/Adestramento/TrainingTracks";
+import Lessons from "@/pages/Adestramento/Lessons";
+import LessonPage from "@/components/Training/LessonPage.jsx"; // ✅ Corrigido para .jsx
+import Progress from "@/pages/Adestramento/Progress";
+
+// ✅ Importando Ranking de Usuários
+import Ranking from "./pages/Ranking/Ranking.jsx"; // ✅ Caminho corrigido para Ranking.jsx
 
 function AppRoutes() {
   const { user, authIsReady } = useAuthContext();
@@ -40,19 +48,13 @@ function AppRoutes() {
 
   return (
     <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
-      <div
-        ref={scrollToTop}
-        className="App flex flex-col sm:flex-row bg-background "
-      >
+      <div ref={scrollToTop} className="App flex flex-col sm:flex-row bg-background">
         <Toaster />
         <BrowserRouter>
           {user ? (
             <UserDocProvider user={user}>
-                            {isMobile ? (
-                  <TopbarMobile setRerender={setRerender} />
-                ) : (
-                  <Topbar setRerender={setRerender} />
-                )}
+              <ReferrerDocProvider user={user}>
+                {isMobile ? <TopbarMobile setRerender={setRerender} /> : <Topbar setRerender={setRerender} />}
                 {isMobile ? null : (
                   <div
                     className={`${
@@ -72,25 +74,23 @@ function AppRoutes() {
                 <div className="sm:w-[calc(100%_-_300px)] sm:ml-[310px] mt-[80px] px-2.5 sm:px-5 sm:mt-[112px]">
                   <Routes>
                     <Route exact path="/" element={<Dashboard />} />
+                    <Route path="/dashboard" element={<Dashboard />} /> {/* ✅ Nova rota do Dashboard */}
+                    <Route path="/ranking" element={<Ranking />} /> {/* ✅ Nova rota do Ranking */}
                     <Route path="/content" element={<Content />} />
-                    <Route
-                      path="/conta"
-                      element={
-                        <Profile
-                          rerender={rerender}
-                          setRerender={setRerender}
-                        />
-                      }
-                    />
+                    <Route path="/conta" element={<Profile />} /> {/* ✅ Rota do perfil corrigida */}
                     <Route path="/help" element={<Help />} />
+
+                    {/* ✅ Novas Rotas de Adestramento */}
+                    <Route path="/training" element={<TrainingTracks />} />
+                    <Route path="/training/:trackId" element={<Lessons />} />
+                    <Route path="/lesson/:lessonId" element={<LessonPage />} /> {/* ✅ Corrigida a importação */}
+                    <Route path="/progress" element={<Progress />} />
+
                     <Route path="*" element={<Dashboard />} />
                   </Routes>
                 </div>
-                {isMobile ? (
-                  <div className="h-16 fixed bottom-0 left-0">
-                    <BottomBar />
-                  </div>
-                ) : null}
+                {isMobile ? <BottomBar /> : null}
+              </ReferrerDocProvider>
             </UserDocProvider>
           ) : (
             <Routes>

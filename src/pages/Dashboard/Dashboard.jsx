@@ -6,22 +6,37 @@ import {
   FlameIcon,
   HandCoinsIcon,
   LockIcon,
-  MapPin,
   MapPinIcon,
   PictureInPicture2Icon,
   PiggyBankIcon,
 } from "lucide-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { useAuthContext } from "@/hooks/useAuthContext";
 import Subscriptions from "../Subscriptions/Subscriptions";
+
+// ✅ Importando notificações in-app e verificação de progresso
+import { checkUserProgressAndNotify } from "../services/NotificationScheduler";
+import InAppNotification from "../components/InAppNotification";
 
 export default function Dashboard() {
   const { user } = useAuthContext();
   const { userDoc } = useUserContext();
   const isWideScreen = useMediaQuery("(min-width: 1920px)");
   const navigate = useNavigate();
+
+  // ✅ Estado para controle da notificação in-app
+  const [showNotification, setShowNotification] = useState(false);
+
+  useEffect(() => {
+    const notify = async () => {
+      const shouldNotify = await checkUserProgressAndNotify();
+      if (shouldNotify) setShowNotification(true);
+    };
+
+    notify();
+  }, []);
 
   const options = [
     {
@@ -69,6 +84,15 @@ export default function Dashboard() {
         <MapPinIcon className="text-brand" />
         <h1 className="text-xl font-medium text-black/75">Comece aqui</h1>
       </div>
+
+      {/* ✅ Exibindo a notificação In-App */}
+      {showNotification && (
+        <InAppNotification
+          message="Seu cão está esperando! Continue sua trilha de adestramento 🐶"
+          onClose={() => setShowNotification(false)}
+        />
+      )}
+
       <div className="mt-3 sm:mt-5 flex gap-6">
         {options.map((option) => (
           <div

@@ -28,8 +28,8 @@ import { isAfter } from "date-fns";
 import { LogOutIcon, UserIcon } from "lucide-react";
 import useMediaQuery from "@/hooks/useMediaQuery";
 
-// ✅ IMPORTANDO ÍCONE DO ADESTRAMENTO
-import { PawPrintIcon } from "lucide-react";
+// ✅ IMPORTANDO ÍCONES DO DASHBOARD, RANKING E ADESTRAMENTO
+import { PawPrintIcon, BarChart3Icon, TrophyIcon } from "lucide-react";
 
 export default function Sidebar({
   rerender,
@@ -118,7 +118,35 @@ export default function Sidebar({
             );
           })}
 
-          {/* ✅ ADICIONANDO BOTÃO PARA O ADESTRAMENTO NO SIDEBAR */}
+          {/* ✅ ADICIONANDO BOTÃO PARA O DASHBOARD */}
+          <div
+            role="button"
+            className={`${
+              sidebarExpanded ? "w-full py-3 pl-2" : "w-fit p-3"
+            } relative flex items-center gap-3 transition-all duration-300 hover:bg-[#dfdfff55] rounded-md`}
+            onClick={() => navigate("/dashboard")}
+          >
+            <BarChart3Icon className="w-5 h-5 text-brand" />
+            {sidebarExpanded && (
+              <p className="text-sm text-black/75 font-normal">Dashboard</p>
+            )}
+          </div>
+
+          {/* ✅ ADICIONANDO BOTÃO PARA O RANKING */}
+          <div
+            role="button"
+            className={`${
+              sidebarExpanded ? "w-full py-3 pl-2" : "w-fit p-3"
+            } relative flex items-center gap-3 transition-all duration-300 hover:bg-[#dfdfff55] rounded-md`}
+            onClick={() => navigate("/ranking")}
+          >
+            <TrophyIcon className="w-5 h-5 text-brand" />
+            {sidebarExpanded && (
+              <p className="text-sm text-black/75 font-normal">Ranking</p>
+            )}
+          </div>
+
+          {/* ✅ ADICIONANDO BOTÃO PARA O ADESTRAMENTO */}
           <div
             role="button"
             className={`${
@@ -132,7 +160,6 @@ export default function Sidebar({
             )}
           </div>
 
-          {/* ✅ MANTENDO A OPÇÃO DE NOTIFICAÇÕES QUE JÁ EXISTIA */}
           {!userDoc.tokenDoc && (
             <div
               role="button"
@@ -154,7 +181,6 @@ export default function Sidebar({
         <div>
           <Separator className="my-3 opacity-15" />
           <div className="flex flex-col py-2.5">
-            {/* ✅ MANTENDO O BOTÃO DA CENTRAL DE AJUDA */}
             <Button
               size="noPadding"
               variant="ghost"
@@ -170,7 +196,6 @@ export default function Sidebar({
               Central de Ajuda
             </Button>
 
-            {/* ✅ MANTENDO O BOTÃO DE LOGOUT */}
             <Button
               size="noPadding"
               variant="ghost"

@@ -19,9 +19,9 @@ export default defineConfig({
         enabled: true,
       },
       manifest: {
-        name: "Generic App", // TODO: Informar o nome do seu app
-        short_name: "GenericApp", // TODO: Informar o nome do seu app
-        description: "A generic app", // TODO: Alterar a descrição
+        name: "PetziApp", // TODO: Informar o nome do seu app
+        short_name: "Petzia", // TODO: Informar o nome do seu app
+        description: "Saúde animal", // TODO: Alterar a descrição
         theme_color: "#000000",
         icons: [
           {
@@ -42,5 +42,10 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  server: {
+    port: 5173, // 🔥 Porta fixa para evitar mudança automática
+    strictPort: true, // 🔒 Não muda a porta se estiver em uso
+    open: true, // 🚀 Abre automaticamente no navegador ao rodar `npm run dev`
   },
 });

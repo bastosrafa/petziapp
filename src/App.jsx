@@ -11,9 +11,21 @@ import { useToast } from "./shadcn/components/ui/use-toast";
 import { ToastAction } from "./shadcn/components/ui/toast";
 import { useNavigate } from "react-router-dom";
 
+// ✅ Importando serviço de notificações
+import { requestNotificationPermission } from "./services/NotificationService";
+
+// ✅ Importando serviço de notificações agendadas
+import { checkUserProgressAndNotify } from "./services/NotificationScheduler";
+
 function App() {
   const { user } = useAuthContext();
   // const { toast } = useToast();
+
+  // ✅ Chamando a permissão para notificações ao iniciar o app
+  useEffect(() => {
+    requestNotificationPermission();
+    checkUserProgressAndNotify(); // ✅ Verifica progresso e notifica usuário se necessário
+  }, []);
 
   // onMessage(messaging, (payload) => {
   //   console.log(payload);

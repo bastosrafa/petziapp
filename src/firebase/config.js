@@ -3,7 +3,6 @@ import { initializeFirestore, serverTimestamp } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
-
 import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
 // TODO: Colocar o firebaseConfig do seu app aqui abaixo
@@ -21,6 +20,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 
+// ✅ Inicializando o Firebase Messaging
 const messaging = getMessaging(firebaseApp);
 
 // TODO: Descomentar código abaixo após ativar o App Check
@@ -43,4 +43,4 @@ const timestamp = serverTimestamp();
 // Google Sign In
 const googleProvider = new GoogleAuthProvider();
 
-export { db, auth, storage, timestamp, googleProvider, messaging };
+export { db, auth, storage, timestamp, googleProvider, messaging, getToken, onMessage };
