@@ -12,10 +12,10 @@ import { ToastAction } from "./shadcn/components/ui/toast";
 import { useNavigate } from "react-router-dom";
 
 // ✅ Importando serviço de notificações
-import { requestNotificationPermission } from "./services/NotificationService";
+import { requestNotificationPermission } from "./services/NotificationService.js";
 
 // ✅ Importando serviço de notificações agendadas
-import { checkUserProgressAndNotify } from "./services/NotificationScheduler";
+import { checkUserProgressAndNotify } from "./services/NotificationScheduler.js";
 
 function App() {
   const { user } = useAuthContext();

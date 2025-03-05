@@ -9,18 +9,19 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!-- Título da Aplicação -->
     <title>PetziApp</title>
-    <!-- Firebase App (necessário) -->
-    <script defer src="/__/firebase/11.0.2/firebase-app-compat.js"></script>
-    <!-- Firebase Messaging -->
-    <script defer src="/__/firebase/11.0.2/firebase-messaging-compat.js"></script>
-    <!-- Inicialização do Firebase -->
-    <script defer src="/__/firebase/init.js"></script>
+    
+    <!-- Firebase CDN -->
+    <script defer src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.0.0/firebase-messaging.js"></script>
+    
+    <!-- Inicialização do Firebase (Certifique-se de que este arquivo contém a configuração correta) -->
+    <script defer src="/src/firebase-init.js"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-        <script type="module" src="/src/main.jsx"></script>
-
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
-

@@ -2,11 +2,13 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import { VitePWA } from "vite-plugin-pwa";
+import tsconfigPaths from "vite-tsconfig-paths"; // 🔹 Corrige alias automaticamente no Vite
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
+    tsconfigPaths(), // 🔹 Garante que os aliases sejam resolvidos corretamente
     VitePWA({
       registerType: "autoUpdate",
       injectRegister: "auto",
@@ -41,6 +43,8 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      "@services": path.resolve(__dirname, "./src/services"), // 🔹 Garante que services sempre seja referenciado corretamente
+      "@components": path.resolve(__dirname, "./src/components"), // 🔹 Alias para componentes
     },
   },
   server: {

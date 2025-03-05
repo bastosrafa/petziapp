@@ -5,7 +5,7 @@ export const requestNotificationPermission = async () => {
     const permission = await Notification.requestPermission();
     if (permission === "granted") {
       const token = await getToken(messaging, {
-        vapidKey: "AIzaSyBnLH-WPXrw6LbXTo6FhHogwjFApEOXIos", // ✅ Chave VAPID inserida corretamente
+        vapidKey: "xx", // ✅ Chave VAPID inserida corretamente
       });
       console.log("Token de Notificação:", token);
       return token;
