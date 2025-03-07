@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { db } from "../../firebase/config"; // ✅ Caminho corrigido
+import { db } from "../../firebase/firebaseConfig"; // ✅ Caminho corrigido
 import { collection, query, orderBy, limit, getDocs } from "firebase/firestore";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Card, CardContent } from "../../shadcn/components/ui/card";
+import { Avatar, AvatarImage } from "../../shadcn/components/ui/avatar";
 
 export default function Ranking() {
   const [ranking, setRanking] = useState([]);

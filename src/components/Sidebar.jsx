@@ -22,7 +22,7 @@ import { ProfilePicDialog } from "./ProfilePicDialog";
 import { routeOptions } from "@/constants/constants.jsx";
 import { useUserContext } from "@/hooks/useUserContext";
 import { getToken } from "firebase/messaging";
-import { messaging } from "@/firebase/config";
+import { messaging } from "@/firebase/firebaseConfig";
 import { useDocument } from "@/hooks/useDocument";
 import { isAfter } from "date-fns";
 import { LogOutIcon, UserIcon } from "lucide-react";

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { db } from "../../firebase/config"; // ✅ Caminho corrigido
+import { db } from "../../firebase/firebaseConfig"; // ✅ Firebase configurado corretamente
 import { collection, getDocs } from "firebase/firestore";
-import { Card, CardContent } from "@/components/ui/card";
-import useProgress from "../../hooks/useProgress"; // ✅ Importando progresso do usuário
+import { Card, CardContent } from "../../shadcn/components/ui/card";
+import useProgress from "../../hooks/useProgress"; // ✅ Obtém progresso do usuário
 
 export default function LessonsList() {
   const { trackId } = useParams(); // Obtém o ID da trilha selecionada
@@ -35,7 +35,7 @@ export default function LessonsList() {
             className={`cursor-pointer ${
               progress.completedLessons?.includes(lesson.id) ? "opacity-50" : ""
             }`}
-            onClick={() => navigate(`/lesson/${lesson.id}`)}
+            onClick={() => navigate(`/lesson/${trackId}/${lesson.id}`)} // ✅ Correção do link para a lição correta
           >
             <CardContent>
               <img src={lesson.image} alt={lesson.title} className="rounded-lg w-full" />
@@ -50,3 +50,4 @@ export default function LessonsList() {
     </div>
   );
 }
+

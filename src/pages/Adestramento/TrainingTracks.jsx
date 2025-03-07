@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { db, auth } from "../../firebase/config"; // ✅ Caminho corrigido
+import { db, auth } from "../../firebase/firebaseConfig"; // ✅ Caminho corrigido
 import { collection, getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 

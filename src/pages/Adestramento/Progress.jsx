@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { db, auth } from "@/firebase/config"; // ✅ Mantendo os imports do Firebase
+import { db, auth } from "@/firebase/firebaseConfig"; // ✅ Mantendo os imports do Firebase
 import { collection, getDocs } from "firebase/firestore";
 import useProgress from "../../hooks/useProgress"; // ✅ Importando o hook de progresso
 

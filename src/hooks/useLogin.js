@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth, db, googleProvider } from "../firebase/config";
+import { auth, db, googleProvider } from "../firebase/firebaseConfig";
 import { useAuthContext } from "./useAuthContext";
 import { signInWithPopup } from "firebase/auth";
 import { getCookie } from "@/utils/getCookie";

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { signOut } from "firebase/auth";
 import { doc, updateDoc } from "firebase/firestore";
-import { auth, db } from "../firebase/config";
+import { auth, db } from "../firebase/firebaseConfig";
 import { useAuthContext } from "./useAuthContext";
 
 export const useLogout = () => {

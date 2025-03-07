@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { db, auth } from "../../firebase/config"; // ✅ Caminho corrigido
+import { db, auth } from "../../firebase/firebaseConfig"; // ✅ Caminho corrigido
 import { doc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../shadcn/components/ui/button";
 
 export default function LessonPage() {
   const { lessonId } = useParams();

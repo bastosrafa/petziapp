@@ -9,7 +9,7 @@ import {
   limit,
   collectionGroup,
 } from "firebase/firestore";
-import { db } from "../firebase/config";
+import { db } from "../firebase/firebaseConfig";
 
 export const useCollection = (
   coll,

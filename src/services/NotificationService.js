@@ -1,4 +1,4 @@
-import { messaging, getToken, onMessage } from "../firebase/config";
+import { messaging, getToken, onMessage } from "../firebase/firebaseConfig";
 
 export const requestNotificationPermission = async () => {
   try {

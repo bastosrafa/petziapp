@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { db, auth } from "../firebase/config"; // ✅ Caminho corrigido
+import { db, auth } from "../firebase/firebaseConfig"; // ✅ Caminho corrigido
 import { doc, getDoc } from "firebase/firestore";
 
 export default function useProgress() {

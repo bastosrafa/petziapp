@@ -17,8 +17,8 @@ import { useAuthContext } from "@/hooks/useAuthContext";
 import Subscriptions from "../Subscriptions/Subscriptions";
 
 // ✅ Importando notificações in-app e verificação de progresso
-import { checkUserProgressAndNotify } from "../services/NotificationScheduler.js";
-import InAppNotification from "../components/InAppNotification";
+import { checkUserProgressAndNotify } from "../../services/NotificationScheduler";
+import InAppNotification from "../../components/Training/InAppNotification";
 
 export default function Dashboard() {
   const { user } = useAuthContext();

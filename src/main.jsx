@@ -4,6 +4,7 @@ import App from "./App.jsx";
 import "./index.css";
 import { AuthContextProvider } from "./contexts/AuthContext";
 import { registerSW } from "virtual:pwa-register";
+import "./firebase/firebaseConfig";
 
 // import { Toaster } from "@/shadcn/components/ui/toaster";
 

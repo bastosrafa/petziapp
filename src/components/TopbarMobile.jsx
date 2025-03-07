@@ -1,7 +1,7 @@
 import { HamburgerMenuIcon, PersonIcon, BellIcon } from "@radix-ui/react-icons";
 import React, { useState } from "react";
 import { getToken } from "firebase/messaging";
-import { messaging } from "@/firebase/config";
+import { messaging } from "@/firebase/firebaseConfig";
 import { useAuthContext } from "@/hooks/useAuthContext";
 import { useUserContext } from "@/hooks/useUserContext";
 import Loading from "./Loading";

@@ -1,4 +1,5 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "../../shadcn/components/ui/button";
+
 
 export default function InAppNotification({ message, onClose }) {
   return (

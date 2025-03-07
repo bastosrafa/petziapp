@@ -14,7 +14,6 @@ const firebaseConfig = {
   storageBucket: "petzia-f86b4.firebasestorage.app",
   messagingSenderId: "375896389326",
   appId: "1:375896389326:web:dddf24146bf368fc88029f",
-  measurementId: "G-SZJ3S8XPKT"
 };
 
 // Initialize Firebase

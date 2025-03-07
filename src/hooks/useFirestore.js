@@ -8,7 +8,7 @@ import {
   setDoc,
   serverTimestamp,
 } from "firebase/firestore";
-import { db, timestamp } from "../firebase/config";
+import { db, timestamp } from "../firebase/firebaseConfig";
 
 const initialState = {
   document: null,

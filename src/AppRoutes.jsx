@@ -14,9 +14,9 @@ import PasswordRecovery from "./pages/Recover/Recover";
 import Help from "./pages/Help/Help";
 import Training from "./pages/Adestramento/TrainingTracks";
 import { ReferrerDocProvider } from "./contexts/ReferrerDocContext";
-import { db, auth } from "./firebase/config"; // ✅ Caminho corrigido
+import { db, auth } from "./firebase/firebaseConfig"; // ✅ Caminho corrigido
 import { doc, onSnapshot } from "firebase/firestore";
-import Dashboard from "./pages/Dashboard/Dashboard.jsx"; // ✅ Caminho correto
+import Dashboard from "./pages/Adestramento/Dashboard.jsx"; // ✅ Caminho correto
 import TopbarMobile from "./components/TopbarMobile";
 import BottomBar from "./components/BottomBar";
 import Content from "./pages/Content/Content";
@@ -28,7 +28,7 @@ import LessonPage from "@/components/Training/LessonPage.jsx"; // ✅ Corrigido 
 import Progress from "@/pages/Adestramento/Progress";
 
 // ✅ Importando Ranking de Usuários
-import Ranking from "./pages/Ranking/Ranking.jsx"; // ✅ Caminho corrigido para Ranking.jsx
+import Ranking from "./pages/adestramento/Ranking.jsx"; // ✅ Caminho corrigido para Ranking.jsx
 
 function AppRoutes() {
   const { user, authIsReady } = useAuthContext();

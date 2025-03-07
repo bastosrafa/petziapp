@@ -1,4 +1,4 @@
-import { db, auth } from "../firebase/config";
+import { db, auth } from "../firebase/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 
 export const checkUserProgressAndNotify = async () => {

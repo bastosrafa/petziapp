@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { db } from "@/firebase/config"; // ✅ Caminho corrigido
+import { db } from "@/firebase/firebaseConfig"; // ✅ Caminho corrigido
 import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
 
 export default function Lessons() {

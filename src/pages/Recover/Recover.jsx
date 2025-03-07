@@ -7,7 +7,7 @@ import { ReloadIcon } from "@radix-ui/react-icons";
 import Logo from "@/components/Logo";
 import { useNavigate } from "react-router-dom";
 import { sendPasswordResetEmail } from "firebase/auth";
-import { auth } from "@/firebase/config";
+import { auth } from "@/firebase/firebaseConfig";
 import { useToast } from "@/shadcn/components/ui/use-toast";
 
 export default function PasswordRecovery() {

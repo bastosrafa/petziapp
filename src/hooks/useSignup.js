@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
-import { auth, db, timestamp } from "../firebase/config";
+import { auth, db, timestamp } from "../firebase/firebaseConfig";
 import { useAuthContext } from "./useAuthContext";
 import { useQuery } from "./useQuery";
 import { getCookie } from "@/utils/getCookie";

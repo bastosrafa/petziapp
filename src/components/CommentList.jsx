@@ -3,7 +3,7 @@ import HeartPng from "../assets/heart.png";
 import { useFirestore } from "@/hooks/useFirestore";
 import { arrayRemove, arrayUnion } from "firebase/firestore";
 import { useAuthContext } from "@/hooks/useAuthContext";
-import { timestamp } from "@/firebase/config";
+import { timestamp } from "@/firebase/firebaseConfig";
 import { useEffect, useState, useRef } from "react";
 import { Textarea } from "@/shadcn/components/ui/textarea";
 import { getUniqueId } from "@/utils/getUniqueId";

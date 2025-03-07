@@ -8,7 +8,7 @@ import Logo from "@/components/Logo";
 import { useNavigate } from "react-router-dom";
 import GoogleLogo from "@/components/GoogleLogo";
 import { signInWithCustomToken } from "firebase/auth";
-import { auth } from "@/firebase/config";
+import { auth } from "@/firebase/firebaseConfig";
 
 export default function Login() {
   const { login, isPending, error } = useLogin();
